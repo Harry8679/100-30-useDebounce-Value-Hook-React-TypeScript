@@ -9,6 +9,7 @@ export const SearchDemo = () => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   // Mock products database
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const products: Product[] = [
     { id: 1, name: 'iPhone 15 Pro', category: 'Smartphones', price: 1199, description: 'Latest Apple flagship' },
     { id: 2, name: 'MacBook Pro M3', category: 'Laptops', price: 2499, description: 'Powerful laptop' },
