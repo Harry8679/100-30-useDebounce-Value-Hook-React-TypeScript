@@ -22,6 +22,7 @@ export const SearchDemo = () => {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSearchCount((prev) => prev + 1);
       
       // Simulate API call
