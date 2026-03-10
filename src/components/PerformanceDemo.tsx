@@ -9,6 +9,7 @@ export const PerformanceDemo = () => {
 
   // Track normal renders
   const normalRenderCountRef = useRef(0);
+  // eslint-disable-next-line react-hooks/refs
   normalRenderCountRef.current++;
   
   // This effect runs on every render
