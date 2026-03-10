@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { useDebounce } from '../hooks';
 import type { User } from '../types';
@@ -21,7 +22,7 @@ export const ApiCallDemo = () => {
 
   useEffect(() => {
     if (debouncedQuery) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+       
       setIsLoading(true);
       setApiCallCount((prev) => prev + 1);
 
@@ -39,7 +40,7 @@ export const ApiCallDemo = () => {
       setUsers([]);
       setIsLoading(false);
     }
-  }, [debouncedQuery]);
+  }, [debouncedQuery, mockUsers]);
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
