@@ -35,7 +35,7 @@ export const SearchDemo = () => {
     } else {
       setResults([]);
     }
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, products]);
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
