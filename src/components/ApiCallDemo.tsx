@@ -21,6 +21,7 @@ export const ApiCallDemo = () => {
 
   useEffect(() => {
     if (debouncedQuery) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoading(true);
       setApiCallCount((prev) => prev + 1);
 
