@@ -22,7 +22,6 @@ export const ApiCallDemo = () => {
 
   useEffect(() => {
     if (debouncedQuery) {
-       
       setIsLoading(true);
       setApiCallCount((prev) => prev + 1);
 
