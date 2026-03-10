@@ -20,6 +20,7 @@ export const PerformanceDemo = () => {
 
   // Track debounced renders
   const debouncedRenderCountRef = useRef(0);
+  // eslint-disable-next-line react-hooks/refs
   useState(() => {
     if (debouncedText) {
       debouncedRenderCountRef.current++;
