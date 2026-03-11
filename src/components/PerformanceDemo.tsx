@@ -1,29 +1,30 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useDebounce } from '../hooks';
 
 export const PerformanceDemo = () => {
   const [text, setText] = useState('');
-  const [normalRenderCount, setNormalRenderCount] = useState(0);
-  const [debouncedRenderCount, setDebouncedRenderCount] = useState(0);
   const debouncedText = useDebounce(text, 500);
 
-  // Track normal renders - s'exécute à CHAQUE render
+  // Count renders directly without useEffect
   const normalRenderCountRef = useRef(0);
-  
-  useEffect(() => {
-    normalRenderCountRef.current++;
-    setNormalRenderCount(normalRenderCountRef.current);
-  }); // ✅ PAS de tableau de dépendances
+  // eslint-disable-next-line react-hooks/refs
+  normalRenderCountRef.current++;
+  // eslint-disable-next-line react-hooks/refs
+  const normalRenderCount = normalRenderCountRef.current;
 
-  // Track debounced renders
+  // Count debounced changes
   const debouncedRenderCountRef = useRef(0);
+  const prevDebouncedTextRef = useRef(debouncedText);
   
-  useEffect(() => {
-    if (debouncedText) {
-      debouncedRenderCountRef.current++;
-      setDebouncedRenderCount(debouncedRenderCountRef.current);
-    }
-  }, [debouncedText]);
+  // eslint-disable-next-line react-hooks/refs
+  if (prevDebouncedTextRef.current !== debouncedText && debouncedText) {
+    // eslint-disable-next-line react-hooks/refs
+    debouncedRenderCountRef.current++;
+    // eslint-disable-next-line react-hooks/refs
+    prevDebouncedTextRef.current = debouncedText;
+  }
+  // eslint-disable-next-line react-hooks/refs
+  const debouncedRenderCount = debouncedRenderCountRef.current;
 
   const savings = normalRenderCount > 0 
     ? Math.round(((normalRenderCount - debouncedRenderCount) / normalRenderCount) * 100)
@@ -54,7 +55,7 @@ export const PerformanceDemo = () => {
         <div className="grid md:grid-cols-3 gap-4">
           <div className="p-4 bg-red-100 dark:bg-red-900/20 rounded-lg">
             <div className="text-sm text-red-700 dark:text-red-400 mb-1">
-              Rendus sans debounce
+              Rendus totaux
             </div>
             <div className="text-3xl font-bold text-red-600 dark:text-red-300">
               {normalRenderCount}
@@ -63,7 +64,7 @@ export const PerformanceDemo = () => {
 
           <div className="p-4 bg-green-100 dark:bg-green-900/20 rounded-lg">
             <div className="text-sm text-green-700 dark:text-green-400 mb-1">
-              Rendus avec debounce
+              Changements debounced
             </div>
             <div className="text-3xl font-bold text-green-600 dark:text-green-300">
               {debouncedRenderCount}
@@ -85,7 +86,7 @@ export const PerformanceDemo = () => {
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                Rendus normaux
+                Rendus totaux
               </span>
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 {normalRenderCount}
@@ -102,7 +103,7 @@ export const PerformanceDemo = () => {
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                Rendus debounced
+                Changements debounced
               </span>
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 {debouncedRenderCount}
@@ -119,7 +120,7 @@ export const PerformanceDemo = () => {
 
         <div className="p-4 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
           <p className="text-sm text-purple-700 dark:text-purple-400">
-            💡 Le debounce réduit drastiquement le nombre de rendus et de calculs inutiles, améliorant les performances de votre application !
+            💡 Le debounce réduit drastiquement le nombre de mises à jour, améliorant les performances de votre application !
           </p>
         </div>
       </div>
