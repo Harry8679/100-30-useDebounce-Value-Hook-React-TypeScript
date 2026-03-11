@@ -185,7 +185,7 @@ const filteredItems = useMemo(() => {
           </div>
 
           {/* Benefits */}
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg p-8 text-white">
+          <div className="bg-linear-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg p-8 text-white">
             <h2 className="text-2xl font-bold mb-6">🚀 Avantages du Debouncing</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
