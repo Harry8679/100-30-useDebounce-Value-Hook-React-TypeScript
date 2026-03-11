@@ -7,13 +7,13 @@ export const PerformanceDemo = () => {
   const [debouncedRenderCount, setDebouncedRenderCount] = useState(0);
   const debouncedText = useDebounce(text, 500);
 
-  // Track normal renders
+  // Track normal renders - s'exécute à CHAQUE render
   const normalRenderCountRef = useRef(0);
   
   useEffect(() => {
     normalRenderCountRef.current++;
     setNormalRenderCount(normalRenderCountRef.current);
-  }, []);
+  }); // ✅ PAS de tableau de dépendances
 
   // Track debounced renders
   const debouncedRenderCountRef = useRef(0);
