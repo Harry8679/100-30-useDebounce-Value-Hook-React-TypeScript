@@ -89,7 +89,7 @@ export const PerformanceDemo = () => {
             </div>
           </div>
 
-          <div className="p-6 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg">
+          <div className="p-6 bg-linear-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg">
             <h4 className="font-bold text-green-800 dark:text-green-300 mb-3">
               ⏱️ Avec Debounce (500ms)
             </h4>
