@@ -48,7 +48,7 @@ export const LiveTypingDemo = () => {
               <span>{debouncedWordCount} mots</span>
             </div>
           </div>
-          <div className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-lg min-h-[200px] border-2 border-blue-200 dark:border-blue-800">
+          <div className="p-6 bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-lg min-h-[200px] border-2 border-blue-200 dark:border-blue-800">
             {debouncedMessage ? (
               <div className="prose dark:prose-invert max-w-none">
                 <p className="text-gray-800 dark:text-white whitespace-pre-wrap">
