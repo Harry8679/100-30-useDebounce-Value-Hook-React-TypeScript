@@ -64,7 +64,7 @@ export const PerformanceDemo = () => {
 
         {/* Visual Representation */}
         <div className="space-y-4">
-          <div className="p-6 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg">
+          <div className="p-6 bg-linear-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg">
             <h4 className="font-bold text-red-800 dark:text-red-300 mb-3">
               ⚡ Sans Debounce
             </h4>
