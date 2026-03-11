@@ -72,7 +72,7 @@ export const PerformanceDemo = () => {
               Chaque caractère déclenche un appel API
             </p>
             <div className="flex gap-1 flex-wrap">
-              {text.split('').map((char, i) => (
+              {text.split('').map((_char, i) => (
                 <div
                   key={i}
                   className="w-8 h-8 bg-red-500 rounded flex items-center justify-center text-white text-xs"
