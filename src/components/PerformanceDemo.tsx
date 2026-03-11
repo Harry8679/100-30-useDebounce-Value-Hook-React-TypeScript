@@ -13,7 +13,7 @@ export const PerformanceDemo = () => {
   useEffect(() => {
     normalRenderCountRef.current++;
     setNormalRenderCount(normalRenderCountRef.current);
-  });
+  }, []);
 
   // Track debounced renders
   const debouncedRenderCountRef = useRef(0);
