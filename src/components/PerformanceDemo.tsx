@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDebounce } from '../hooks';
 
 export const PerformanceDemo = () => {
@@ -9,24 +9,21 @@ export const PerformanceDemo = () => {
 
   // Track normal renders
   const normalRenderCountRef = useRef(0);
-  // eslint-disable-next-line react-hooks/refs
-  normalRenderCountRef.current++;
   
-  // This effect runs on every render
-  // eslint-disable-next-line react-hooks/refs
-  useState(() => {
+  useEffect(() => {
+    normalRenderCountRef.current++;
     setNormalRenderCount(normalRenderCountRef.current);
   });
 
   // Track debounced renders
   const debouncedRenderCountRef = useRef(0);
-  // eslint-disable-next-line react-hooks/refs
-  useState(() => {
+  
+  useEffect(() => {
     if (debouncedText) {
       debouncedRenderCountRef.current++;
       setDebouncedRenderCount(debouncedRenderCountRef.current);
     }
-  });
+  }, [debouncedText]);
 
   const savings = normalRenderCount > 0 
     ? Math.round(((normalRenderCount - debouncedRenderCount) / normalRenderCount) * 100)
